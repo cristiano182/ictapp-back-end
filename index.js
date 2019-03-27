@@ -8,10 +8,17 @@ const cors = require('cors')
 const app = express()
 require('./src/config/database')
 
+
+//// OPTIONS FOR CORS 
+var corsOptions = {
+   origin: 'https://ictapp.net',
+   optionsSuccessStatus: 200
+ }
+
 // MIDDLEWARES
+app.use( cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
-app.use( cors())
 
  // routes
  app.use(require('./src/routes/posts'))
