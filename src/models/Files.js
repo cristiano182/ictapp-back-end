@@ -13,6 +13,7 @@ const FilesSchema = new Schema ({
                 type: String,
                 required: true
             },
+            foto:{type: String},
             date:{
                 type: Date, default: Date.now
             },
