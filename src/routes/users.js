@@ -179,7 +179,7 @@ router.put("/users/updatecurso", async (req, res) => {
         user.curso = "required_BMC";
         user.cursoName = "Bacharelado Matematica Computacional";
         user.cargaHoraria = 2196;
-        user.cargaHorariaComplementar = 144;
+        user.cargaHorariaComplementar = 72;
       } else if (newCurso === "ENGENHARIA DE MATERIAIS") {
         user.curso = "required_EM";
         user.cursoName = "Engenharia de Materiais";

@@ -29,10 +29,14 @@ router.put("/files/:id", async (req, res) => {
 });
 ///////////////// ADD NOVA UC
 router.post("/files", async (req, res) => {
+try {
   const { name, info } = req.body;
   const newFiles = new Files({ name, info });
   await newFiles.save();
   res.send(req.body);
+} catch (err) {
+  res.send(err)
+}
 });
 
 router.post("/teste", async (req, res) => {
