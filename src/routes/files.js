@@ -22,10 +22,18 @@ router.get("/files/:skip", async (req, res) => {
 router.put("/files/:id", async (req, res) => {
   try {
     const newInfo = req.body;
-    const obj = await Files.findById(req.params.id);
-    obj.info.push(newInfo);
-    await obj.save();
-    res.send(obj.info);
+
+    let token = req.headers["authorization"].split(" ")[1];
+    const decoded = jwt.verify(token, JWT_KEY);
+    const user = await User.findOne({ userID: decoded.userID });
+
+    if (user) {
+      const obj = await Files.findById(req.params.id);
+      obj.info.push(newInfo);
+      await obj.save();
+    }
+
+    res.sendStatus(200);
   } catch (err) {
     res.send(err);
   }
@@ -38,11 +46,11 @@ router.post("/files/delete", async (req, res) => {
     const decoded = jwt.verify(token, JWT_KEY);
     const user = await User.findOne({ userID: decoded.userID });
     if (user) {
-      if(user.role === 1){
-      let obj = await Files.findById(uc_id);
-      let newArray = await obj.info.filter(p => p._id != info_id);
-      obj.info = newArray;
-      await obj.save();
+      if (user.role === 1) {
+        let obj = await Files.findById(uc_id);
+        let newArray = await obj.info.filter(p => p._id != info_id);
+        obj.info = newArray;
+        await obj.save();
       }
       res.sendStatus(200);
     } else {

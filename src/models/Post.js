@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 
 const PostSchema = new Schema({
   texto: { type: String, required: true },
+  autor:{type: String, required: true},
   date: { type: Date, default: Date.now },
   campus: { type: String, required: true },
   quantidade_comentarios: { type: Number, default: 0 },

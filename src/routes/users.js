@@ -17,7 +17,7 @@ router.post("/users/login", async (req, res) => {
     } else {
       res.send(null);
     }
-  } catch (err) { 
+  } catch (err) {
     res.send(err);
   }
 });
