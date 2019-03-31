@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
  // routes
- app.use(require('./src/routes/posts'))
+ //app.use(require('./src/routes/posts'))
  app.use(require('./src/routes/dados'))
  app.use(require('./src/routes/users'))
  app.use(require('./src/routes/files'))
