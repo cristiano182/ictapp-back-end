@@ -10,7 +10,7 @@ router.get("/files/:skip", async (req, res) => {
   try {
     let skip = parseInt(req.params.skip);
     const files = await Files.find()
-      .sort({ name: "crescent" })
+      .sort({ name: 1 })
       .skip(skip)
       .limit(20);
     res.send(files);
